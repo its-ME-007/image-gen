@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static_files', filename='style.css') }}">
+</head>
+<body>
+    <h1>Gemini Image Generator</h1>
+
+    <div class="input-group">
+        <label for="promptInput">Image Prompt:</label>
+        <textarea id="promptInput" rows="4" cols="50" placeholder="Enter a description for the image (e.g., A heavy machinery steel cutter in a factory environment)"></textarea>
+    </div>
+
+    <div class="input-group">
+        <label for="filenameInput">Save As (optional base name):</label>
+        <input type="text" id="filenameInput" placeholder="e.g., steel_cutter">
+        <small>A timestamp and .png will be added automatically.</small>
+    </div>
+
+    <button id="generateBtn">Generate & Upload Image</button>
+
+    <p id="statusMessage"></p>
+
+    <div class="image-container">
+        <img id="generatedImage" src="" alt="Generated Image will appear here">
+    </div>
+
+    <script src="{{ url_for('static_files', filename='script.js') }}"></script>
+</body>
+</html>
