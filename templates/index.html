@@ -5,27 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemini Image Generator</title>
     <link rel="stylesheet" href="{{ url_for('static_files', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static_files', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
-    <h1>Gemini Image Generator</h1>
+    <div class="container">
+        <h1>Gemini Image Generator</h1>
 
-    <div class="input-group">
-        <label for="promptInput">Image Prompt:</label>
-        <textarea id="promptInput" rows="4" cols="50" placeholder="Enter a description for the image (e.g., A heavy machinery steel cutter in a factory environment)"></textarea>
-    </div>
+        <div class="form-group">
+            <label for="promptInput">Image Prompt:</label>
+            <textarea id="promptInput" rows="4" cols="50" placeholder="Enter a description for the image (e.g., A heavy machinery steel cutter in a factory environment)"></textarea>
+        </div>
 
-    <div class="input-group">
-        <label for="filenameInput">Save As (optional base name):</label>
-        <input type="text" id="filenameInput" placeholder="e.g., steel_cutter">
-        <small>A timestamp and .png will be added automatically.</small>
-    </div>
+        <div class="form-group">
+            <label for="filenameInput">Save As (optional base name):</label>
+            <input type="text" id="filenameInput" placeholder="e.g., steel_cutter">
+            <div class="helper-text">A timestamp and .png will be added automatically.</div>
+        </div>
 
-    <button id="generateBtn">Generate & Upload Image</button>
+        <button id="generateBtn">Generate & Upload Image</button>
 
-    <p id="statusMessage"></p>
+        <div id="statusMessage" class="success-message" style="display: none;"></div>
 
-    <div class="image-container">
-        <img id="generatedImage" src="" alt="Generated Image will appear here">
+        <!-- Enhanced image display area -->
+        <div class="result-container">
+            <h2 class="result-title" style="display: none;">Generated Image</h2>
+            <div class="image-container">
+                <div class="image-card">
+                    <img id="generatedImage" src="" alt="Generated Image will appear here" style="display: none;">
+                    <!-- Loading spinner -->
+                    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="image-info" id="imageInfo" style="display: none;"></div>
+        </div>
     </div>
 
     <script src="{{ url_for('static_files', filename='script.js') }}"></script>
